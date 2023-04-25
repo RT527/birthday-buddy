@@ -1,4 +1,4 @@
-![Game-Screenshot-min](https://user-images.githubusercontent.com/126704408/230446815-02fad672-dfb2-4efc-a069-5cda23352ebd.png)
+![Game-Screenshot-min](bdaylink)
 # Birthday-Buddy
 A blank themed Birthday Reminder that includes:
 * Birthdates
@@ -10,7 +10,7 @@ I was inspired...
 ## Getting Started 🕹️
 Whack any character to get points! But if you whack Scooby-doo you will get negative points.
 
-## [Get to WHACKING!](deploymentlinl)
+## [Get to Birthday!](deploymentlinl)
 
 ## Attributions
 
