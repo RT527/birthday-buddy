@@ -4,7 +4,7 @@ import { Birthday } from "../models/birthday.js"
 
 function index(req, res) {
   const title = "Title"
-  birthday.find({})
+  Birthday.find({})
     .then(birthdays => {
       console.log(birthdays)
       res.render('birthdays/index', {
@@ -32,8 +32,8 @@ function newbirthday (req,res) {
 }
 
 function create(req, res) {
-  let newbirthdayData = req.body
-  birthday.create(newbirthdayData)
+  let newBirthdayData = req.body
+  Birthday.create(newBirthdayData)
   .then(birthday => {
     res.redirect('/birthdays')
   })

@@ -1,0 +1,29 @@
+<%- include("../partials/html-head.ejs") %>
+<link rel="stylesheet" href="/stylesheets/style.css">
+<%- include("../partials/nav.ejs") %>
+
+<main>
+  <title>New Birthday</title>
+  <form id="new-form" action="/birthdays" method="POST">
+    <div class="form-row">
+      <label for="name-input">Buddy's Name:</label>
+      <input type="text" name="buddysName" id="name-input">
+    </div>
+    <div class="form-row">
+      <label for="bday-input">Birthdate:</label>
+      <input type="date" name="birthdate" id="birthdate-input">
+    </div>
+    <div class="form-row">
+      <label for="note-input">Note:</label>
+      <input type="text" name="note" id="note-input">
+    </div>
+    <div class="form-row">
+      <button type="submit">Add Birthday!</button>
+    </div>
+  </form>
+</main>
+
+<%- include("../partials/footer.ejs") %>
+
+
+<%- include("../partials/footer.ejs") %>

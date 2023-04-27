@@ -8,8 +8,10 @@
   </a>
   <div id="nav-title">Birthday-Buddy</div>
   <% if (user) { %>
-    <a href="/profiles">Users</a>
-    <a href="/profiles/<%= user.profile._id %>">My Reminders</a>
+    <a href="/birthdays/new">Add Bday</a>
+    <a href="/birthdays" class="<%= title === "All Birthdays" ? "active" : "" %> here">
+      ALL Birthdays
+    </a>
     <div id="avatar-container" class="right">
       <a href="/auth/logout">
         <button id="logout-btn" type="submit">Log Out</button>
