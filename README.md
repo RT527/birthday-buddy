@@ -10,7 +10,7 @@ I was inspired...
 ## Getting Started 🕹️
 Whack any character to get points! But if you whack Scooby-doo you will get negative points.
 
-## [Get to Birthday!](deploymentlinl)
+## [Get to Birthday!](https://birthday-buddy.fly.dev/)
 
 ## Attributions
 
