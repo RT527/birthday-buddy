@@ -4,7 +4,16 @@ import express from 'express'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import createError from 'http-errors'
+import session from 'express-session'
 import logger from 'morgan'
+import methodOverride from 'method-override'
+import passport from 'passport'
+
+// connect to MongoDB with mongoose
+import './config/database.js'
+
+// load passport
+import './config/passport.js'
 
 // import routers
 import { router as indexRouter } from './routes/index.js'
@@ -19,12 +28,33 @@ app.set('view engine', 'ejs')
 // basic middleware
 app.use(logger('dev'))
 app.use(express.json())
-app.use(express.urlencoded({ extended: false }))
+app.use(express.urlencoded({ extended: true }))
 app.use(
   express.static(
     path.join(path.dirname(fileURLToPath(import.meta.url)), 'public')
   )
 )
+
+// the middleware below!
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      sameSite: 'lax',
+    }
+  })
+)
+
+// NEW Passport Middleware below
+app.use(passport.initialize())
+app.use(passport.session())
+// NEW Passport Middleware above
+
+// mount all routes with appropriate base paths
+app.use('/', indexRouter)
+app.use('/profiles', profilesRouter)
 
 // mount imported routes
 app.use('/', indexRouter)
