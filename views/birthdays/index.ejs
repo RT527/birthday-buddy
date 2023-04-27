@@ -12,6 +12,19 @@
   <a href="/birthdays/new">Add New Birthday</a>
   <hr>
   <h2>All Birthdays</h2>
+  <ul>
+    <% birthdays.forEach(birthday => { %>
+      <li>
+        <strong>Name:</strong> <%= birthday.personName %><br>
+        <strong>Birthdate:</strong> <%= birthday.birthday.toLocaleDateString() %><br>
+        <strong>Note</strong> <%= birthday.notes %><br>
+        <a href="/birthdays/<%= birthday._id %>">View Info</a> |
+        <a href="/birthdays/<%= birthday._id %>/edit">Edit</a> |
+        <form action="/birthdays/<%= birthday._id %>?_method=DELETE" method="POST" class="delete-form">
+          <button type="submit">Delete</button>
+      </li>
+    <% }) %>
+  </ul>
 </body>
 </html>
 

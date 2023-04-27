@@ -8,7 +8,7 @@ function index(req, res) {
     .then(birthdays => {
       console.log(birthdays)
       res.render('birthdays/index', {
-        birthdays,
+        birthdays: birthdays,
         currentDate: new Date(),
         title: title
       });
@@ -20,15 +20,21 @@ function index(req, res) {
 }
 
 function update(req, res) {
-  req.body.nowShowing = !!req.body.nowShowing
-  for (let key in req.body) {
-    if (req.body[key] === '') delete req.body[key]
-  }
-  res.send('Update worked')
+  const updateData = req.body
+  const options = { new: true }
+  Birthday.findByIdAndUpdate(req.params.birthdayId, updateData, options)
+    .then(birthday => {
+      res.redirect('/birthdays/' + birthday._id)
+    })
+    .catch(err => {
+      console.log('Error updating birthday:', err)
+      res.redirect('/birthdays/' + req.params.birthdayId + '/edit')
+    })
 }
 
-function newbirthday (req,res) {
-  res.render('birthdays/new', { title: 'Add New birthday' });
+
+function newBirthday (req,res) {
+  res.render('birthdays/new', { title: 'Add New birthday' })
 }
 
 function create(req, res) {
@@ -46,13 +52,12 @@ function create(req, res) {
 
 const show = async (req, res) => {
   try {
-    const birthday = await birthday.findById(req.params.birthdayId)
-    .populate('meals')
-    const someMeals = await Meal.find({_id: {$nin: birthday.meals}})
+    const birthday = await Birthday.findById(req.params.birthdayId)
+    const someGifts = await Gift.find({ _id: { $nin: birthday.gifts } })
     res.render('birthdays/show', {
       birthday,
       title: `birthday Info`,
-      meals: someMeals
+      gifts: someGifts
     })
   } catch (err) {
     console.log(err)
@@ -61,7 +66,7 @@ const show = async (req, res) => {
 
 const edit = async (req, res) => {
   try {
-    const birthday = await birthday.findById(req.params.birthdayId)
+    const birthday = await Birthday.findById(req.params.birthdayId).populate('gifts')
     res.render('birthdays/edit', {
       birthday,
       title: 'Edit your birthday'
@@ -73,9 +78,9 @@ const edit = async (req, res) => {
 }
 
 
-async function deletebirthday(req, res) {
+async function deleteBirthday(req, res) {
   try {
-    const deleted = await birthday.findByIdAndRemove(req.params.birthdayId)
+    const deleted = await Birthday.findByIdAndRemove(req.params.birthdayId)
     if (deleted) {
       res.redirect('/birthdays')
     } else {
@@ -91,9 +96,9 @@ async function deletebirthday(req, res) {
 
 
 export {
-  newbirthday as new,
+  newBirthday as new,
   index,
-  deletebirthday as delete,
+  deleteBirthday as delete,
   show,
   update,
   edit,

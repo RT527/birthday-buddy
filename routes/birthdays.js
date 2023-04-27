@@ -15,4 +15,13 @@ router.get('/:birthdayId', birthdayCtrl.show)
 // GET localhost:3000/birthdays/:birthdayId/edit
 router.get('/:birthdayId/edit', birthdayCtrl.edit)
 
+// POST localhost:3000/birthdays
+router.post('/', birthdayCtrl.create);
+
+// DELETE localhost:3000/birthdays/:birthdayId
+router.delete('/:birthdayId', birthdayCtrl.delete)
+
+// PUT localhost:3000/flights/:flightId
+router.put('/:birthdayId', birthdayCtrl.update)
+
 export { router }
