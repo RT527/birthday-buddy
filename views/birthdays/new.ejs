@@ -11,11 +11,24 @@
     </div>
     <div class="form-row">
       <label for="bday-input">Birthdate:</label>
-      <input type="date" name="birthday" id="birthdate-input">
+      <input type="date" name="birthday" id="birthdate-input" max="<%= new Date().toISOString().split('T')[0] %>">
     </div>
     <div class="form-row">
       <label for="note-input">Note:</label>
       <input type="text" name="notes" id="note-input">
+    </div>
+    <div class="form-row">
+      <h3>Add Gift</h3>
+      <div class="gift-form">
+        <div class="form-row">
+          <label for="gift-name">Gift:</label>
+          <input type="text" name="gifts[][name]">
+        </div>
+        <div class="form-row">
+          <label for="gift-description">Description:</label>
+          <input type="text" name="gifts[][description]">
+        </div>
+      </div>
     </div>
     <div class="form-row">
       <button type="submit">Add Birthday!</button>

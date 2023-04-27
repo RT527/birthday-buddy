@@ -9,15 +9,37 @@
 </head>
 <body>
   <h1>Birthdays</h1>
-  <a href="/birthdays/new">Add New Birthday</a>
   <hr>
-  <h2>All Birthdays</h2>
   <ul>
     <% birthdays.forEach(birthday => { %>
       <li>
         <strong>Name:</strong> <%= birthday.personName %><br>
-        <strong>Birthdate:</strong> <%= birthday.birthday.toLocaleDateString() %><br>
+        <strong>Birthdate:</strong> <%= new Date(birthday.birthday.getTime() + (new Date().getTimezoneOffset() * 60 * 1000)).toLocaleDateString() %><br>
+        <%
+          const birthdate = new Date(birthday.birthday)
+          const now = new Date()
+          const ageInMilliseconds = now - birthdate
+          const ageDate = new Date(ageInMilliseconds)
+          const ageInYears = ageDate.getUTCFullYear() - 1970
+          const ageInMonths = ageDate.getUTCMonth()
+          const ageInDays = ageDate.getUTCDate() - 1
+        
+          let ageString = ageInYears + " years"
+          if (ageInMonths > 0) {
+            ageString += ", " + ageInMonths + " months"
+          }
+          if (ageInDays > 0) {
+            ageString += ", " + ageInDays + " days"
+          }
+        %>
+        <strong>Age:</strong> <%= ageString %><br>
         <strong>Note</strong> <%= birthday.notes %><br>
+        <strong>Gifts:</strong>
+        <ul>
+          <% birthday.gifts.forEach(gift => { %>
+            <li><%= gift.name %>: <%= gift.description %></li>
+          <% }) %>
+        </ul>
         <a href="/birthdays/<%= birthday._id %>">View Info</a> |
         <a href="/birthdays/<%= birthday._id %>/edit">Edit</a> |
         <form action="/birthdays/<%= birthday._id %>?_method=DELETE" method="POST" class="delete-form">

@@ -17,5 +17,5 @@ const birthdaySchema = new Schema ({
 const Birthday = mongoose.model('Birthday', birthdaySchema)
 
 export {
-  Birthday
+  Birthday,
 }
