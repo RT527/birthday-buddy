@@ -7,4 +7,6 @@ router.get('/', function(req, res) {
   res.render('index', { title: 'Birthday Buddy' })
 })
 
-export { router }
+export { 
+  router 
+}
