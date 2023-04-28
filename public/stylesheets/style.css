@@ -22,7 +22,7 @@ body {
 
 nav {
   background-color: #f6f6f6;
-  color:aquamarine;
+  color:black;
   display: flex;
   align-items: center;
   padding: 10px;
@@ -41,8 +41,10 @@ main {
 }
 
 #app-logo {
-  width: 5vh;
+  width: 75px;
+  height: 75px;
 }
+
 
 #nav-avatar {
   border-radius: 50%;
