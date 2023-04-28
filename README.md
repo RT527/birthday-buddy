@@ -26,7 +26,7 @@ I developed this application with the purpose of helping people keep track of im
 ### Images 🌇:
 * [Favicon](https://favicon.io/emoji-favicons/cookie/)
 * [Background](https://wallpapers.com/wallpapers/scooby-doo-and-shaggy-ultra-instinct-mc8dt9ozaptjxl6k.html)
-* [Scrappy-doo](https://hero.fandom.com/wiki/Scrappy-Doo?file=Scrappy-Doo_promo.png)
+* [Birthday-Buddy](https://thumbs.dreamstime.com/b/super-cool-birthday-cake-character-cartoon-super-cool-birthday-cake-character-cartoon-vector-illustration-117210954.jpg)
 
 ## Technologies Used 📡
 * Mongoose
@@ -38,6 +38,7 @@ I developed this application with the purpose of helping people keep track of im
 * Javascript
 * Chrome DevTools
 * Git 
+* [Fonts](https://fonts.google.com/share?selection.family=Short%20Stack)
 
 ## Ice Box 🧊
 * Add different color themes
