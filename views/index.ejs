@@ -1,6 +1,15 @@
 <%- include('./partials/html-head') %>
 <%- include('./partials/nav') %>
 
+<!DOCTYPE html>
+<html>
+<head>
+  <title>All The Birthdays!</title>
+  <link href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css' rel='stylesheet' />
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js'></script>
+</head>
+
 <main id="landing-container">
   <% if (!user) { %>
     <h1>Log in to start!</h1>
@@ -21,11 +30,11 @@
       data-logo_alignment="left"
     ></div>
   <% } else { %>
-    <h1>Find Birthdays</h1>
-    <form id="search-form" action="/birthday/search" method="GET">
-      <input type="text" name="birthdate">
-      <button type="submit">Find</button>
-    </form>
+    <body>
+      <h1>Birthdays</h1>
+      <hr>
+      <div id='calendar'></div>
+    </body>
   <% } %>
 </main>
 
