@@ -1,13 +1,5 @@
 ![Game-Screenshot-min](bdaylink)
 # Birthday-Buddy
-A blank themed Birthday Reminder that includes:
-* Birthdates
-* Gifts
-* ETC 
-
-I was inspired...
-
-## Getting Started 🥳
 It can get hectic remembering all your friends and family's birthdays. But, with Birthday-Buddy, you can effortlessly create reminders for all of your loved ones.
 
 In order to gain access to your birthday reminders you must log in. If you wish to add a birthdate you can do so by clicking the "Add Bday" button in the navigation bar. Once you're in the "Add Bday" link you can put in your details and also add possible gifts.
@@ -16,12 +8,13 @@ If you want to view more information on a certain birthdate, click on "More Info
 
 I developed this application with the purpose of helping people keep track of important dates such as the birthdays of their friends and family. It's not easy to remember all of these dates on your own, but with Birthday-Buddy, you can easily record and store all of your loved one's special days with minimal effort.
 
-## [Get to Birthday!](https://birthday-buddy.fly.dev/)
+## Getting Started 🥳
 
-## Attributions
+### [Get to Birthday Reminding Now!](https://birthday-buddy.fly.dev/)
 
-### Sound Effects 🔊:
-* ME!
+Project planning materials [here](https://trello.com/c/eLvAclQS/15-imagepng)
+
+## Credits
 
 ### Images 🌇:
 * [Favicon](https://favicon.io/emoji-favicons/birthday-cake/)
@@ -33,6 +26,7 @@ I developed this application with the purpose of helping people keep track of im
 * MongoDB
 * Express
 * Node.js
+* Fly.io
 * HTML
 * CSS
 * Javascript
