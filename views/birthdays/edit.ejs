@@ -1,0 +1,29 @@
+<%- include("../partials/html-head.ejs") %>
+<link rel="stylesheet" href="/stylesheets/birthdays/index.css">
+<%- include("../partials/nav.ejs") %>
+
+<main>
+  <h1>Edit Birthday Info</h1>
+  <form action="/birthdays/<%= birthday._id %>?_method=PUT" method="POST">
+    <label for="name-input">Buddy's Name:</label>
+    <input type="text" name="personName" id="name-input" value="<%= birthday.personName %>" required><br>
+    <label for="bday-input">Birthdate:</label>
+    <input type="date" name="birthday" id="birthdate-input" max="<%= new Date().toISOString().split('T')[0] %>" value="<%= birthday.birthday %>" required><br>
+    <label for="note-input">Note:</label>
+    <input type="text" name="notes" id="note-input" value="<%= birthday.notes %>" required><br>
+    <div class="form-row">
+      <label for="gift-name">Gift:</label>
+      <input type="text" name="gifts[][name]">
+    </div>
+    <div class="form-row">
+      <label for="gift-description">Description:</label>
+      <input type="text" name="gifts[][description]">
+    </div>
+    <div class="form-row">
+      <input type="submit" value="Save Changes">
+    </div>
+  </form>
+</main>
+
+<%- include("../partials/footer.ejs") %>
+

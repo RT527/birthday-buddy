@@ -1,0 +1,52 @@
+<%- include("../partials/html-head.ejs") %>
+<link rel="stylesheet" href="/stylesheets/birthdays/index.css">
+<%- include("../partials/nav.ejs") %>
+<main>
+	<title>Birthday Details</title>
+</head>
+<body>
+	<h1>Birthday Details</h1>
+	<table>
+		<tr>
+			<th>Name</th>
+			<td><%= birthday.personName %></td>
+		</tr>
+		<tr>
+			<th>Notes</th>
+			<td><%= birthday.notes %></td>
+		</tr>
+		<tr>
+      <th>Birthdate:</th> <%= new Date(birthday.birthday.getTime() + (new Date().getTimezoneOffset() * 60 * 1000)).toLocaleDateString() %><br>
+      <%
+        const birthdate = new Date(birthday.birthday)
+        const now = new Date()
+        const ageInMilliseconds = now - birthdate
+        const ageDate = new Date(ageInMilliseconds)
+        const ageInYears = ageDate.getUTCFullYear() - 1970
+        const ageInMonths = ageDate.getUTCMonth()
+        const ageInDays = ageDate.getUTCDate() - 1
+      
+        let ageString = ageInYears + " years"
+        if (ageInMonths > 0) {
+          ageString += ", " + ageInMonths + " months"
+        }
+        if (ageInDays > 0) {
+          ageString += ", " + ageInDays + " days"
+        }
+      %>
+      <th>Age:</th> <%= ageString %><br>
+      <th>Gifts:</th>
+      <ul>
+        <% birthday.gifts.forEach(gift => { %>
+          <li><%= gift.name %>: <%= gift.description %></li>
+        <% }) %>
+      </ul>
+		</tr>
+	</table>
+	<br>
+	<a href="/birthdays">Back to Birthdays List</a>
+	<br>
+	<a href="/birthdays/<%= birthday.id %>/edit">Edit Birthday</a>
+</main>
+
+<%- include("../partials/footer.ejs") %>

@@ -21,7 +21,7 @@ router.post('/', birthdayCtrl.create);
 // DELETE localhost:3000/birthdays/:birthdayId
 router.delete('/:birthdayId', birthdayCtrl.delete)
 
-// PUT localhost:3000/flights/:flightId
+// PUT localhost:3000/birthdays/:birthdayId
 router.put('/:birthdayId', birthdayCtrl.update)
 
 export { router }

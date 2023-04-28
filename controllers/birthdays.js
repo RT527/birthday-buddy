@@ -1,4 +1,6 @@
 import { Birthday } from "../models/birthday.js"
+import { Gift } from "../models/birthday.js"
+
 
 //creating a new birthday reminder, retrieving all reminders, updating a reminder, and deleting a reminder.
 
