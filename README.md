@@ -36,7 +36,8 @@ Project planning materials [here](https://trello.com/c/eLvAclQS/15-imagepng)
 
 ## Ice Box 🧊
 * Add different color themes
-* more stuff
+* Add calender 
+* Add astrology filter
 
 
 

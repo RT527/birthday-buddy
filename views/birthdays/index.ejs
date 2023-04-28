@@ -33,7 +33,7 @@
           }
         %>
         <strong>Age:</strong> <%= ageString %><br>
-        <strong>Note</strong> <%= birthday.notes %><br>
+        <strong>Notes:</strong> <%= birthday.notes %><br>
         <strong>Gifts:</strong>
         <ul>
           <% birthday.gifts.forEach(gift => { %>
@@ -41,10 +41,10 @@
           <% }) %>
         </ul>
         <a href="/birthdays/<%= birthday._id %>">
-          <button id="add-btn" type="submit">View Info</button>
+          <button id="x-btn" type="submit">View Info</button>
         </a>
         <a href="/birthdays/<%= birthday._id %>/edit"> 
-          <button id="all-btn" type="submit">Edit</button>
+          <button id="x-btn" type="submit">Edit</button>
         </a>
         <form action="/birthdays/<%= birthday._id %>?_method=DELETE" method="POST" class="delete-form">
           <button type="submit">Delete</button>
