@@ -10,47 +10,47 @@
 <body>
   <h1>Birthdays</h1>
   <hr>
-  <ul>
-    <% birthdays.forEach(birthday => { %>
-      <li>
-        <strong>Name:</strong> <%= birthday.personName %><br>
-        <strong>Birthdate:</strong> <%= new Date(birthday.birthday.getTime() + (new Date().getTimezoneOffset() * 60 * 1000)).toLocaleDateString() %><br>
-        <%
-          const birthdate = new Date(birthday.birthday)
-          const now = new Date()
-          const ageInMilliseconds = now - birthdate
-          const ageDate = new Date(ageInMilliseconds)
-          const ageInYears = ageDate.getUTCFullYear() - 1970
-          const ageInMonths = ageDate.getUTCMonth()
-          const ageInDays = ageDate.getUTCDate() - 1
-        
-          let ageString = ageInYears + " years"
-          if (ageInMonths > 0) {
-            ageString += ", " + ageInMonths + " months"
-          }
-          if (ageInDays > 0) {
-            ageString += ", " + ageInDays + " days"
-          }
-        %>
-        <strong>Age:</strong> <%= ageString %><br>
-        <strong>Notes:</strong> <%= birthday.notes %><br>
-        <strong>Gifts:</strong>
-        <ul>
-          <% birthday.gifts.forEach(gift => { %>
-            <li><%= gift.name %>: <%= gift.description %></li>
-          <% }) %>
-        </ul>
-        <a href="/birthdays/<%= birthday._id %>">
-          <button id="x-btn" type="submit">View Info</button>
-        </a>
-        <a href="/birthdays/<%= birthday._id %>/edit"> 
-          <button id="x-btn" type="submit">Edit</button>
-        </a>
-        <form action="/birthdays/<%= birthday._id %>?_method=DELETE" method="POST" class="delete-form">
-          <button type="submit">Delete</button>
-      </li>
-    <% }) %>
-  </ul>
+    <ul>
+      <% birthdays.forEach(birthday => { %>
+        <li>
+          <strong>Name:</strong> <%= birthday.personName %><br>
+          <strong>Birthdate:</strong> <%= new Date(birthday.birthday.getTime() + (new Date().getTimezoneOffset() * 60 * 1000)).toLocaleDateString() %><br>
+          <%
+            const birthdate = new Date(birthday.birthday)
+            const now = new Date()
+            const ageInMilliseconds = now - birthdate
+            const ageDate = new Date(ageInMilliseconds)
+            const ageInYears = ageDate.getUTCFullYear() - 1970
+            const ageInMonths = ageDate.getUTCMonth()
+            const ageInDays = ageDate.getUTCDate() - 1
+          
+            let ageString = ageInYears + " years"
+            if (ageInMonths > 0) {
+              ageString += ", " + ageInMonths + " months"
+            }
+            if (ageInDays > 0) {
+              ageString += ", " + ageInDays + " days"
+            }
+          %>
+          <strong>Age:</strong> <%= ageString %><br>
+          <strong>Notes:</strong> <%= birthday.notes %><br>
+          <strong>Gifts:</strong>
+          <ul>
+            <% birthday.gifts.forEach(gift => { %>
+              <li><%= gift.name %>: <%= gift.description %></li>
+            <% }) %>
+          </ul>
+          <a href="/birthdays/<%= birthday._id %>">
+            <button id="x-btn" type="submit">View Info</button>
+          </a>
+          <a href="/birthdays/<%= birthday._id %>/edit"> 
+            <button id="x-btn" type="submit">Edit</button>
+          </a>
+          <form action="/birthdays/<%= birthday._id %>?_method=DELETE" method="POST" class="delete-form">
+            <button type="submit">Delete</button>
+        </li>
+      <% }) %>
+    </ul>
 </body>
 </html>
 
