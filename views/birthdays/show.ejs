@@ -1,5 +1,5 @@
 <%- include("../partials/html-head.ejs") %>
-<link rel="stylesheet" href="/stylesheets/birthdays/index.css">
+<link rel="stylesheet" href="/stylesheets/birthdays/show.css">
 <%- include("../partials/nav.ejs") %>
 
 <main>
@@ -48,9 +48,12 @@
     </tr>
   </table>
   <br>
-  <a href="/birthdays">Back to Birthdays List</a>
-  <br>
-  <a href="/birthdays/<%= birthday.id %>/edit">Edit Birthday</a>
+  <a href="/birthdays">
+    <button id="add-btn" type="submit">Back to Birthdays List</button>
+  </a>
+  <a href="/birthdays/<%= birthday.id %>/edit"> 
+    <button id="all-btn" type="submit">Edit Birthday</button>
+  </a>
 </main>
 
 <%- include("../partials/footer.ejs") %>

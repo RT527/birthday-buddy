@@ -11,7 +11,7 @@ html {
 
 body {
   background-color:gainsboro;
-  color:slategrey;
+  color:black;
   font-family: 'Short Stack', cursive;
   margin: 0;
 }
@@ -120,11 +120,12 @@ nav a:hover {
 nav #add-btn {
   background-color: #d8d8d8;
   font-family: 'Short Stack', cursive;
-  border: none;
+  border: 2px;
   padding: 10px 20px;
   border-radius: 7px;
   cursor: pointer;
   font-size: 25px;
+  border-color: black;
 }
 
 nav #all-btn {
@@ -137,7 +138,18 @@ nav #all-btn {
   font-size: 25px;
 }
 
+.form-row {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
 
+.birthday-container {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
 
 
 

@@ -1,4 +1,4 @@
-![Game-Screenshot-min](bdaylink)
+![Screenshot](public/images/bday-screenshot.png)
 # Birthday-Buddy
 It can get hectic remembering all your friends and family's birthdays. But, with Birthday-Buddy, you can effortlessly create reminders for all of your loved ones.
 
