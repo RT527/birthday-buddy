@@ -61,12 +61,13 @@ nav > a {
 }
 
 #logout-btn, button {
-  font-size: 2.5vh;
+  background-color: #d8d8d8;
   font-family: 'Short Stack', cursive;
   border: none;
-  background-color:honeydew;
-  border: 2px solid black;
+  padding: 10px 20px;
+  border-radius: 7px;
   cursor: pointer;
+  font-size: 25px;
 }
 
 #avatar-container {
@@ -98,3 +99,45 @@ nav > a {
   height: 100%;
   z-index: -1;
 }
+
+nav a {
+  text-decoration: none;
+  font-family: 'Short Stack', cursive;
+  padding: 10px;
+  border-radius: 5px;
+  color: black;
+}
+
+nav .active {
+  background-color: #d8d8d8;
+}
+
+nav a:hover {
+  background-color:black;
+}
+
+
+nav #add-btn {
+  background-color: #d8d8d8;
+  font-family: 'Short Stack', cursive;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 7px;
+  cursor: pointer;
+  font-size: 25px;
+}
+
+nav #all-btn {
+  background-color: #d8d8d8;
+  font-family: 'Short Stack', cursive;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 7px;
+  cursor: pointer;
+  font-size: 25px;
+}
+
+
+
+
+

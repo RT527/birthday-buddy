@@ -24,8 +24,8 @@ I developed this application with the purpose of helping people keep track of im
 * ME!
 
 ### Images 🌇:
-* [Favicon](https://favicon.io/emoji-favicons/cookie/)
-* [Background](https://wallpapers.com/wallpapers/scooby-doo-and-shaggy-ultra-instinct-mc8dt9ozaptjxl6k.html)
+* [Favicon](https://favicon.io/emoji-favicons/birthday-cake/)
+* [Cake-Background](https://gifdb.com/images/high/happy-birthday-cake-rainbow-slice-candle-fbr7ycwj98vxiah2.gif)
 * [Birthday-Buddy](https://thumbs.dreamstime.com/b/super-cool-birthday-cake-character-cartoon-super-cool-birthday-cake-character-cartoon-vector-illustration-117210954.jpg)
 
 ## Technologies Used 📡

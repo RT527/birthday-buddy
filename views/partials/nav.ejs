@@ -3,47 +3,49 @@
 <% } %>
 </head>
 <body>
-<nav>
-  <a href="/">
-    <img id="app-logo" src="/images/bday-buddy.png" width="150" height="100" alt="bday-buddy">
-  </a>
-  <div id="nav-title">Birthday-Buddy</div>
-  <% if (user) { %>
-    <a href="/birthdays/new">Add Birthday</a>
-    <a href="/birthdays" class="<%= title === "All Birthdays" ? "active" : "" %> here">
-      ALL Birthdays
+  <nav>
+    <a href="/">
+      <img id="app-logo" src="/images/bday-buddy.png" width="150" height="100" alt="bday-buddy">
     </a>
-    <div id="avatar-container" class="right">
-      <a href="/auth/logout">
-        <button id="logout-btn" type="submit">Log Out</button>
+    <div id="nav-title">Birthday-Buddy</div>
+    <% if (user) { %>
+      <a href="/birthdays/new">
+        <button id="add-btn" type="submit">ADD+ Birthday</button>
       </a>
-      <% if (user?.profile.avatar) { %>
-        <div>
-          <img
-            id="nav-avatar"
-            src="<%= user.profile.avatar %>"
-            alt="<%= user.profile.name %> avatar"
-          />
-        </div>
-      <% } %>
-    </div>
-  <% } else { %>
-    <div 
-      id="g_id_onload"
-      data-client_id="<%= googleClientID %>"
-      data-login_uri="/auth/google"
-      data-auto_prompt="false"
-      data-prompt_parent_id="g_id_onload"
-    ></div>
-    <div 
-      class="g_id_signin right"
-      data-type="standard"
-      data-size="large"
-      data-theme="outline"
-      data-text="sign_in_with"
-      data-shape="rectangular"
-      data-logo_alignment="left"
-    ></div>
-  <% } %>
-</nav>
+      <a href="/birthdays" class="<%= title === "All Birthdays" ? "active" : "" %> here">
+        <button id="all-btn" type="submit">ALL Birthdays</button>
+      </a>
+      <div id="avatar-container" class="right">
+        <a href="/auth/logout">
+          <button id="logout-btn" type="submit">Log Out</button>
+        </a>
+        <% if (user?.profile.avatar) { %>
+          <div>
+            <img
+              id="nav-avatar"
+              src="<%= user.profile.avatar %>"
+              alt="<%= user.profile.name %> avatar"
+            />
+          </div>
+        <% } %>
+      </div>
+    <% } else { %>
+      <div 
+        id="g_id_onload"
+        data-client_id="<%= googleClientID %>"
+        data-login_uri="/auth/google"
+        data-auto_prompt="false"
+        data-prompt_parent_id="g_id_onload"
+      ></div>
+      <div 
+        class="g_id_signin right"
+        data-type="standard"
+        data-size="large"
+        data-theme="outline"
+        data-text="sign_in_with"
+        data-shape="rectangular"
+        data-logo_alignment="left"
+      ></div>
+    <% } %>
+  </nav>
 
