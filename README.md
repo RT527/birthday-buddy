@@ -38,7 +38,8 @@ Project planning materials [here](https://trello.com/c/eLvAclQS/15-imagepng)
 * Add different color themes
 * Add calender 
 * Add astrology filter
-
+* Add birthday reminders to text
+* Add optional contact info
 
 
 
