@@ -107,16 +107,6 @@ async function addGift(req, res) {
   }
 }
 
-async function deleteAllGifts() {
-  try {
-    await Birthday.updateMany({}, { $unset: { gifts: 1 } })
-    console.log('All gift arrays have been deleted.')
-  } catch (err) {
-    console.log('Error deleting gift arrays:', err)
-  }
-}
-
-
 
 
 export {
@@ -127,7 +117,6 @@ export {
   update,
   addGift,
   edit,
-  create,
-  deleteAllGifts
+  create
 }
 
