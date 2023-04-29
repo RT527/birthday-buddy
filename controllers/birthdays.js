@@ -1,8 +1,6 @@
 import { Birthday } from "../models/birthday.js"
 import { Gift } from "../models/gift.js"
-
-
-//creating a new birthday reminder, retrieving all reminders, updating a reminder, and deleting a reminder.
+//========================================================//
 
 function index(req, res) {
   const title = "Title"
@@ -106,8 +104,6 @@ async function addGift(req, res) {
     res.redirect('/birthdays')
   }
 }
-
-
 
 export {
   newBirthday as new,
