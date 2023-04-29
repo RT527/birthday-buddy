@@ -1,0 +1,38 @@
+<%- include("../partials/html-head.ejs") %>
+<link rel="stylesheet" href="/stylesheets/birthdays/index.css">
+<%- include("../partials/nav.ejs") %>
+
+<main>
+  <div class="container">
+    <h1 class="title"><%= title %></h1>
+    <p class="sub-title">Make sure gifts are here</p>
+    <div class="form-container">
+      <form id="add-gift-form" action="/gifts" method="POST">
+        <div class="form-group">
+          <label for="name-input" class="label">Name:</label>
+          <input type="text" name="name" id="name-input" class="input">
+        </div>        
+        <div class="form-group">
+          <button type="submit" class="btn">Add Gift</button>
+        </div>
+      </form>
+    </div>
+    <div class="item-container">
+      <h2 class="item-title">Item</h2>
+      <ul class="item-list">
+        <% gifts.forEach(function(gift) { %>
+          <li class="item-item"><%= gift.name %> 
+            <form action="/gifts/<%= gift._id %>?_method=DELETE" method="POST">
+              <button type="submit">Delete</button>
+            </form>
+          </li>
+        <% }) %>
+      </ul>
+    </div>
+  </div>
+</main>
+
+
+
+<%- include('../partials/footer') %>
+

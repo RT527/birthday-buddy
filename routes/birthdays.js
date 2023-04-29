@@ -18,8 +18,12 @@ router.get('/:birthdayId/edit', birthdayCtrl.edit)
 // POST localhost:3000/birthdays
 router.post('/', birthdayCtrl.create);
 
+router.post('/:birthdayId/gifts', birthdayCtrl.addGift)
+
+
 // DELETE localhost:3000/birthdays/:birthdayId
 router.delete('/:birthdayId', birthdayCtrl.delete)
+
 
 // PUT localhost:3000/birthdays/:birthdayId
 router.put('/:birthdayId', birthdayCtrl.update)

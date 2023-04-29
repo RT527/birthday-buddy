@@ -23,6 +23,7 @@ import { router as indexRouter } from './routes/index.js'
 import { router as authRouter } from './routes/auth.js'
 import { router as birthdaysRouter } from './routes/birthdays.js'
 import { router as profilesRouter } from './routes/profiles.js'
+import { router as giftsRouter } from './routes/gifts.js'
 
 // create the express app
 const app = express()
@@ -64,9 +65,10 @@ app.use(passDataToView)
 app.use('/', indexRouter)
 app.use('/auth', authRouter)
 app.use('/profiles', profilesRouter)
-
-// mount imported routes
 app.use('/birthdays', birthdaysRouter)
+app.use('/gifts', giftsRouter)
+// mount imported routes
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

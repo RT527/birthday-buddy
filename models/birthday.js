@@ -2,14 +2,6 @@ import mongoose from "mongoose"
 
 const Schema = mongoose.Schema
 
-const giftSchema = new Schema({
-  name: {
-    type: String,
-    required: true
-  },
-  description: String
-})
-
 const birthdaySchema = new Schema({
   birthday: {
     type: Date,
@@ -26,14 +18,12 @@ const birthdaySchema = new Schema({
     required: true
   },
   notes: String,
-  gifts: [giftSchema]
+  gifts: [{type: Schema.Types.ObjectId, ref:'Gift'}]
 })
 
 const Birthday = mongoose.model('Birthday', birthdaySchema)
-const Gift = mongoose.model('Gift', giftSchema)
 
 
 export {
   Birthday,
-  Gift
 }

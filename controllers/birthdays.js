@@ -1,5 +1,5 @@
 import { Birthday } from "../models/birthday.js"
-import { Gift } from "../models/birthday.js"
+import { Gift } from "../models/gift.js"
 
 
 //creating a new birthday reminder, retrieving all reminders, updating a reminder, and deleting a reminder.
@@ -51,20 +51,20 @@ function create(req, res) {
   })
 }
 
-
 const show = async (req, res) => {
   try {
     const birthday = await Birthday.findById(req.params.birthdayId)
-    const someGifts = await Gift.find({ _id: { $nin: birthday.gifts } })
+    const gifts = await Gift.find()
     res.render('birthdays/show', {
       birthday,
       title: `birthday Info`,
-      gifts: someGifts
+      gifts,
     })
   } catch (err) {
     console.log(err)
   }
 }
+
 
 const edit = async (req, res) => {
   try {
@@ -94,6 +94,28 @@ async function deleteBirthday(req, res) {
   }
 }
 
+async function addGift(req, res) {
+  try {
+    const birthday = await Birthday.findById(req.params.birthdayId)
+    const giftObjectId = mongoose.Types.ObjectId(req.body.giftId)
+    birthday.gifts.push(giftObjectId)
+    await birthday.save()
+    res.redirect(`/birthdays/${birthday._id}`)
+  } catch (err) {
+    console.log('Error adding gift to birthday:', err)
+    res.redirect('/birthdays')
+  }
+}
+
+async function deleteAllGifts() {
+  try {
+    await Birthday.updateMany({}, { $unset: { gifts: 1 } })
+    console.log('All gift arrays have been deleted.')
+  } catch (err) {
+    console.log('Error deleting gift arrays:', err)
+  }
+}
+
 
 
 
@@ -103,7 +125,9 @@ export {
   deleteBirthday as delete,
   show,
   update,
+  addGift,
   edit,
-  create
+  create,
+  deleteAllGifts
 }
 

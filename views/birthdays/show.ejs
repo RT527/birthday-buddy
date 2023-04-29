@@ -36,17 +36,22 @@
       <th>Note:</th>
       <td><%= birthday.notes %></td>
     </tr>
-    <tr>
-      <th>Gifts:</th>
-      <td>
-        <ul>
-          <% birthday.gifts.forEach(gift => { %>
-            <li><%= gift.name %>: <%= gift.description %></li>
-          <% }) %>
-        </ul>
-      </td>
-    </tr>
   </table>
+
+
+
+<div class="gifts">
+<% if (gifts) { %>
+  <p>Gifts:</p>
+  <span> <% gifts.forEach(gift => { %>
+      <option value="<%= gift._id %>"><%= gift.name %></option>
+  </span>
+  <% }) %>
+<% } else { %>
+  <p>No gifts</p>  
+<% } %>
+</div> 
+
   <br>
   <a href="/birthdays">
     <button id="add-btn" type="submit">Back to Birthdays List</button>

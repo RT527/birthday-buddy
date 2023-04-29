@@ -34,12 +34,6 @@
           %>
           <strong>Age:</strong> <%= ageString %><br>
           <strong>Notes:</strong> <%= birthday.notes %><br>
-          <strong>Gifts:</strong>
-          <ul>
-            <% birthday.gifts.forEach(gift => { %>
-              <li><%= gift.name %>: <%= gift.description %></li>
-            <% }) %>
-          </ul>
           <a href="/birthdays/<%= birthday._id %>">
             <button id="x-btn" type="submit">View Info</button>
           </a>
