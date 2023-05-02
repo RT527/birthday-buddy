@@ -1,12 +1,12 @@
 ![Screenshot](public/images/bday-screenshot.png)
 # Birthday-Buddy
-It can get hectic remembering all your friends and family's birthdays. But, with Birthday-Buddy, you can effortlessly create reminders for all of your loved ones.
+It can get hectic remembering birthdays for your friends and family. But, with Birthday-Buddy, you can effortlessly create reminders for all of your loved ones.
 
-In order to gain access to your birthday reminders you must log in. If you wish to add a birthdate you can do so by clicking the "Add Bday" button in the navigation bar. Once you're in the "Add Bday" link you can put in your details and also add possible gifts.
+In order to gain access to your birthday reminders you must log in. If you wish to add a birth-date you can do so by clicking the "Add Bday" button in the navigation bar. Once you're in the "Add Bday" page you can put in your details and also add possible gifts.
 
-If you want to view more information on a certain birthdate, click on "More Info". You can update or change information by selecting "Edit". If you want to remove a birthday reminder from Birthday-Buddy, use the X button.
+If you want to view more information on a certain birth-date, click on "More Info". You can update or change information by selecting "Edit". If you want to remove a birthday reminder from Birthday-Buddy, use the X button.
 
-I developed this application with the purpose of helping people keep track of important dates such as the birthdays of their friends and family. It's not easy to remember all of these dates on your own, but with Birthday-Buddy, you can easily record and store all of your loved one's special days with minimal effort.
+I developed this application with the purpose of helping people keep track of important dates such as the birthdays of their friends and family. It's not easy to remember all of these dates on your own, but with Birthday-Buddy, you can easily record and store all of your loved ones' special days with minimal effort.
 
 ## Getting Started 🥳
 
@@ -29,14 +29,15 @@ Project planning materials [here](https://trello.com/c/eLvAclQS/15-imagepng)
 * Fly.io
 * HTML
 * CSS
-* Javascript
+* JavaScript
+* Google OAuth
 * Chrome DevTools
 * Git 
 * [Fonts](https://fonts.google.com/share?selection.family=Short%20Stack)
 
 ## Ice Box 🧊
 * Add different color themes
-* Add calender 
+* Add calendar  
 * Add astrology filter
 * Add birthday reminders to text
 * Add optional contact info
