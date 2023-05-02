@@ -4,7 +4,6 @@ import { Gift } from "../models/gift.js"
 const newGift = async (req, res) => {
   try {
     const gifts = await Gift.find({})
-    console.log(gifts, 'Gift')
     res.render('gifts/new', {
       title: 'Add gift',
       gifts

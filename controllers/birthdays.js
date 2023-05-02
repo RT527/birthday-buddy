@@ -6,7 +6,6 @@ function index(req, res) {
   const title = "Title"
   Birthday.find({})
     .then(birthdays => {
-      console.log(birthdays)
       res.render('birthdays/index', {
         birthdays: birthdays,
         currentDate: new Date(),
