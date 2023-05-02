@@ -1,38 +1,31 @@
 import { Profile } from "../models/profile.js"
 //========================================================//
 
-function index(req, res) {
-  Profile.find({})
-  .then(profiles => {
-    Profile.findById(req.user.profile)
-    .then(userProfile => {
-      res.render('profiles/index', {
-        profiles,
-        userProfile
-      })
+
+const index = async (req, res) => {
+  try {
+    const profiles = await Profile.find({})
+    const userProfile = await Profile.findById(req.user.profile)
+    res.render('profiles/index', {
+      profiles,
+      userProfile
     })
-    .catch(err => {
-      console.log(err)
-      res.redirect('/profiles')
-    })
-  })
-  .catch(err => {
+  } catch (err) {
     console.log(err)
     res.redirect('/profiles')
-  })
+  }
 }
 
-function show(req, res) {
-  Profile.findById(req.params.profileId)
-  .then(profile => {
+const show = async (req, res) => {
+  try {
+    const profile = await Profile.findById(req.params.profileId)
     res.render('profiles/show', {
       profile
     })
-  })
-  .catch(err => {
+  } catch (err) {
     console.log(err)
     res.redirect('/profiles')
-  })
+  }
 }
 
 export {

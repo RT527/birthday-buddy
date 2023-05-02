@@ -2,50 +2,46 @@ import { Birthday } from "../models/birthday.js"
 import { Gift } from "../models/gift.js"
 //========================================================//
 
-function index(req, res) {
-  const title = "Title"
-  Birthday.find({})
-    .then(birthdays => {
-      res.render('birthdays/index', {
-        birthdays: birthdays,
-        currentDate: new Date(),
-        title: title
-      });
+const index = async (req, res) => {
+  try {
+    const title = "Title"
+    const birthdays = await Birthday.find({})
+    res.render('birthdays/index', {
+      birthdays,
+      currentDate: new Date(),
+      title
     })
-    .catch(err => {
-      console.log(err)
-      res.redirect('/')
-    })
+  } catch (err) {
+    console.log(err)
+    res.redirect('/')
+  }
 }
 
-function update(req, res) {
-  const updateData = req.body
-  const options = { new: true }
-  Birthday.findByIdAndUpdate(req.params.birthdayId, updateData, options)
-    .then(birthday => {
-      res.redirect('/birthdays/' + birthday._id)
-    })
-    .catch(err => {
-      console.log('Error updating birthday:', err)
-      res.redirect('/birthdays/' + req.params.birthdayId + '/edit')
-    })
+const update = async (req, res) => {
+  try {
+    const updateData = req.body
+    const options = { new: true }
+    const birthday = await Birthday.findByIdAndUpdate(req.params.birthdayId, updateData, options)
+    res.redirect('/birthdays/' + birthday._id)
+  } catch (err) {
+    console.log('Error updating birthday:', err)
+    res.redirect('/birthdays/' + req.params.birthdayId + '/edit')
+  }
 }
 
-
-function newBirthday (req,res) {
+const newBirthday = async (req, res) => {
   res.render('birthdays/new', { title: 'Add New birthday' })
 }
 
-function create(req, res) {
-  let newBirthdayData = req.body
-  Birthday.create(newBirthdayData)
-  .then(birthday => {
+const create = async (req, res) => {
+  try {
+    const newBirthdayData = req.body
+    const birthday = await Birthday.create(newBirthdayData)
     res.redirect('/birthdays')
-  })
-  .catch(err => {
+  } catch (err) {
     console.log('Error creating birthday:', err)
     res.redirect('/birthdays/new')
-  })
+  }
 }
 
 const show = async (req, res) => {
@@ -54,14 +50,13 @@ const show = async (req, res) => {
     const gifts = await Gift.find()
     res.render('birthdays/show', {
       birthday,
-      title: `birthday Info`,
+      title: 'birthday Info',
       gifts,
     })
   } catch (err) {
     console.log(err)
   }
 }
-
 
 const edit = async (req, res) => {
   try {
@@ -76,8 +71,7 @@ const edit = async (req, res) => {
   }
 }
 
-
-async function deleteBirthday(req, res) {
+const deleteBirthday = async (req, res) => {
   try {
     const deleted = await Birthday.findByIdAndRemove(req.params.birthdayId)
     if (deleted) {
@@ -91,13 +85,13 @@ async function deleteBirthday(req, res) {
   }
 }
 
-async function addGift(req, res) {
+const addGift = async (req, res) => {
   try {
     const birthday = await Birthday.findById(req.params.birthdayId)
     const giftObjectId = mongoose.Types.ObjectId(req.body.giftId)
     birthday.gifts.push(giftObjectId)
     await birthday.save()
-    res.redirect(`/birthdays/${birthday._id}`)
+    res.redirect('/birthdays/' + birthday._id)
   } catch (err) {
     console.log('Error adding gift to birthday:', err)
     res.redirect('/birthdays')
