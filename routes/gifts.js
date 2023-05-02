@@ -5,7 +5,7 @@ import * as giftsCtrl from '../controllers/gifts.js'
 const router = Router()
 
 // GET 
-router.get('/item', giftsCtrl.gift)
+router.get('/new', giftsCtrl.gift)
 
 // POST 
 router.post('/', giftsCtrl.create)
