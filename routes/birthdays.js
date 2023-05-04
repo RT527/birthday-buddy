@@ -17,7 +17,7 @@ router.get('/:birthdayId', isLoggedIn, birthdayCtrl.show)
 router.get('/:birthdayId/edit', isLoggedIn, birthdayCtrl.edit)
 
 // POST localhost:3000/birthdays
-router.post('/', isLoggedIn, birthdayCtrl.create);
+router.post('/', isLoggedIn, birthdayCtrl.create)
 
 router.post('/:birthdayId/gifts', isLoggedIn, birthdayCtrl.addGift)
 

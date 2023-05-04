@@ -38,19 +38,34 @@
     </tr>
   </table>
 
+  <div class="gifts">
+    <% if (birthday.gifts.length) { %>
+      <p>Gifts:&nbsp;</p>
+      <% birthday.gifts.forEach( (gift, i) => { %>
+        <% if (i > 0) { %>
+          <span>, </span>
+        <% } %>
+        <span><%=gift.name %></span>
+      <% }) %>
+    <% } else { %>
+      <p>No gifts</p>  
+    <% } %>
+  </div>
 
 
-<div class="gifts">
-<% if (gifts) { %>
-  <p>Gifts:</p>
-  <span> <% gifts.forEach(gift => { %>
-      <option value="<%= gift._id %>"><%= gift.name %></option>
-  </span>
-  <% }) %>
-<% } else { %>
-  <p>No gifts</p>  
-<% } %>
-</div> 
+  <h2>Add Gifts:</h2>
+  <% if(gifts.length) { %>
+    <form id="add-gift" action="/birthdays/<%=birthday._id%>/gifts" method="POST">
+      <select name="giftId">
+        <% gifts.forEach(gift => { %>
+          <option value="<%= gift._id %>"><%= gift.name %></option>
+        <% }) %>
+      </select>
+      <button type="submit">Add to Birthday</button>
+    </form>
+    <% } else { %>
+    <p>No gifts available</p>
+  <% } %>
 
   <br>
   <a href="/birthdays">

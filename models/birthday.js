@@ -18,8 +18,15 @@ const birthdaySchema = new Schema({
     required: true
   },
   notes: String,
-  gifts: [{type: Schema.Types.ObjectId, ref:'Gift'}]
+  gifts: [{type: Schema.Types.ObjectId, ref:'Gift'}],
+  profile: {
+    type: Schema.Types.ObjectId,
+    ref: "Profile",
+    required: true
+  },
 })
+
+
 
 const Birthday = mongoose.model('Birthday', birthdaySchema)
 

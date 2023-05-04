@@ -1,11 +1,11 @@
 import { Birthday } from "../models/birthday.js"
 import { Gift } from "../models/gift.js"
-//========================================================//
+import { Profile } from "../models/profile.js"
 
 const index = async (req, res) => {
   try {
     const title = "Title"
-    const birthdays = await Birthday.find({})
+    const birthdays = await Birthday.find({ profile: req.user.profile._id })
     res.render('birthdays/index', {
       birthdays,
       currentDate: new Date(),
@@ -19,10 +19,12 @@ const index = async (req, res) => {
 
 const update = async (req, res) => {
   try {
+    const birthday = await Birthday.findOne({ _id: req.params.birthdayId, profile: req.user.profile._id })
+    if (!birthday) throw new Error('You are not authorized to edit this birthday.')
     const updateData = req.body
     const options = { new: true }
-    const birthday = await Birthday.findByIdAndUpdate(req.params.birthdayId, updateData, options)
-    res.redirect('/birthdays/' + birthday._id)
+    const updatedBirthday = await Birthday.findByIdAndUpdate(req.params.birthdayId, updateData, options)
+    res.redirect('/birthdays/' + updatedBirthday._id)
   } catch (err) {
     console.log('Error updating birthday:', err)
     res.redirect('/birthdays/' + req.params.birthdayId + '/edit')
@@ -35,7 +37,7 @@ const newBirthday = async (req, res) => {
 
 const create = async (req, res) => {
   try {
-    const newBirthdayData = req.body
+    const newBirthdayData = { ...req.body, profile: req.user.profile._id }
     const birthday = await Birthday.create(newBirthdayData)
     res.redirect('/birthdays')
   } catch (err) {
@@ -46,12 +48,13 @@ const create = async (req, res) => {
 
 const show = async (req, res) => {
   try {
-    const birthday = await Birthday.findById(req.params.birthdayId)
-    const gifts = await Gift.find()
+    const birthday = await Birthday.findOne({ _id: req.params.birthdayId, profile: req.user.profile._id }).populate('gifts')
+    if (!birthday) throw new Error('You are not authorized to view this birthday.')
+    const someGifts = await Gift.find({ _id: { $nin: birthday.gifts } })
     res.render('birthdays/show', {
       birthday,
-      title: 'birthday Info',
-      gifts,
+      title: 'Birthday Info',
+      gifts: someGifts
     })
   } catch (err) {
     console.log(err)
@@ -60,7 +63,8 @@ const show = async (req, res) => {
 
 const edit = async (req, res) => {
   try {
-    const birthday = await Birthday.findById(req.params.birthdayId).populate('gifts')
+    const birthday = await Birthday.findOne({ _id: req.params.birthdayId, profile: req.user.profile._id }).populate('gifts')
+    if (!birthday) throw new Error('You are not authorized to edit this birthday.')
     res.render('birthdays/edit', {
       birthday,
       title: 'Edit your birthday'
@@ -73,7 +77,7 @@ const edit = async (req, res) => {
 
 const deleteBirthday = async (req, res) => {
   try {
-    const deleted = await Birthday.findByIdAndRemove(req.params.birthdayId)
+    const deleted = await Birthday.findOneAndRemove({ _id: req.params.birthdayId, profile: req.user.profile._id })
     if (deleted) {
       res.redirect('/birthdays')
     } else {
@@ -87,9 +91,14 @@ const deleteBirthday = async (req, res) => {
 
 const addGift = async (req, res) => {
   try {
-    const birthday = await Birthday.findById(req.params.birthdayId)
-    const giftObjectId = mongoose.Types.ObjectId(req.body.giftId)
-    birthday.gifts.push(giftObjectId)
+    const birthday = await Birthday.findOne({ _id: req.params.birthdayId})
+    if (!birthday) {
+      return res.render('error', { title: 'Error', message: 'Birthday not found', error:{status:403, stack: 'fix'} })
+    }
+    if (!req.user) {
+      return res.render('error', { title: 'Error', message: 'You must be logged in to add gifts', error:{status:403, stack: 'fix'} })
+    }
+    birthday.gifts.push(req.body.giftId)
     await birthday.save()
     res.redirect('/birthdays/' + birthday._id)
   } catch (err) {
@@ -97,6 +106,7 @@ const addGift = async (req, res) => {
     res.redirect('/birthdays')
   }
 }
+
 
 export {
   newBirthday as new,

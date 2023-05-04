@@ -3,7 +3,7 @@ import { Gift } from "../models/gift.js"
 
 const newGift = async (req, res) => {
   try {
-    const gifts = await Gift.find({})
+    const gifts = await Gift.find({profile: req.user.profile._id })
     res.render('gifts/new', {
       title: 'Add gift',
       gifts
@@ -16,6 +16,7 @@ const newGift = async (req, res) => {
 
 const create = async (req, res) => {
   try {
+    req.body.profile = req.user.profile._id 
     await Gift.create(req.body)
     res.redirect('/gifts/new')
   } catch (err) {
@@ -26,6 +27,7 @@ const create = async (req, res) => {
 
 const remove = async (req, res) => {
   try {
+    req.body.profile = req.user.profile._id 
     const gift = await Gift.findByIdAndDelete(req.params.giftId)
     res.redirect('/gifts/new')
   } catch (err) {
